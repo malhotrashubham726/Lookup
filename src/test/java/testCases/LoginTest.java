@@ -45,13 +45,13 @@ public class LoginTest extends TestBase {
 				System.out.println("Login Successful");
 				myAcPage.clickLogout();
 				myAcPage.clickContinueAfterLogout();
-				utils.setCellData("Sheet1", integerRow, 2, "Pass", outputPath);
+//				utils.setCellData("Sheet1", integerRow, 2, "Pass", outputPath);
 			}
 			
 			else {
 				System.out.println("Login failed");
 				
-				utils.setCellData("Sheet1", integerRow, 2, "Fail", outputPath);
+//				utils.setCellData("Sheet1", integerRow, 2, "Fail", outputPath);
 				Assert.fail();
 			}
 			
