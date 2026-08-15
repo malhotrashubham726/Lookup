@@ -17,7 +17,7 @@ import utilities.ExcelUtility;
 
 public class LoginTest extends TestBase {
 	
-	@Test(dataProvider="LoginData", dataProviderClass=DataProviders.class)
+	@Test(dataProvider="LoginData", dataProviderClass=DataProviders.class, groups= {"regression", "sanity", "functional"})
 	public void login(String email, String password, String row) {
 		try {
 			HomePage hp=new HomePage(driver);
@@ -42,14 +42,14 @@ public class LoginTest extends TestBase {
 			int integerRow=Integer.valueOf(row);
 			
 			if(driver.getTitle().equals(myAcPage.acPageTitle)) {
-				System.out.println("Login Successful");
+				logger.info("User logged in using " + email);
 				myAcPage.clickLogout();
 				myAcPage.clickContinueAfterLogout();
 //				utils.setCellData("Sheet1", integerRow, 2, "Pass", outputPath);
 			}
 			
 			else {
-				System.out.println("Login failed");
+				logger.info("Login failed using " + email);
 				
 //				utils.setCellData("Sheet1", integerRow, 2, "Fail", outputPath);
 				Assert.fail();

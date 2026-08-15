@@ -1,7 +1,7 @@
-.classpath
-.project
-.settings/
-target/
-.factorypath
+.target
 logs/
-test-output/ 
+.project
+.classpath
+target/
+test-output/
+.settings/
