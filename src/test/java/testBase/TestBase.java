@@ -54,6 +54,7 @@ public class TestBase {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().deleteAllCookies();
+		// Lets check
 		logger=LogManager.getLogger(this.getClass());
 	}
 	
