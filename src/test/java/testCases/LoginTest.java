@@ -17,7 +17,7 @@ import utilities.ExcelUtility;
 
 public class LoginTest extends TestBase {
 	
-	@Test(dataProvider="LoginData", dataProviderClass=DataProviders.class, groups= {"regression", "sanity", "functional"})
+	@Test(dataProvider="LoginData", dataProviderClass=DataProviders.class, groups= {"regression", "check", "functional"}, invocationCount = 2)
 	public void login(String email, String password, String row) {
 		try {
 			HomePage hp=new HomePage(driver);
@@ -31,11 +31,12 @@ public class LoginTest extends TestBase {
 			lp.sendEmail(email);
 			lp.sendPassword(password);
 			
-			String loginPageTitle=lp.getTitle();
 			lp.clickLogin();
-			logger.info("Logging in using email and password");
-			
+
 			MyAccountPage myAcPage=new MyAccountPage(driver);
+			
+			wait.until(ExpectedConditions.or(ExpectedConditions.visibilityOf(lp.errorMsg), ExpectedConditions.titleIs(myAcPage.acPageTitle)));
+			logger.info("Logging in using email and password");
 			
 			ExcelUtility utils=new ExcelUtility(System.getProperty("user.dir") + prop.getProperty("excelInputPath"));
 			String outputPath=System.getProperty("user.dir") + prop.getProperty("excelInputPath");

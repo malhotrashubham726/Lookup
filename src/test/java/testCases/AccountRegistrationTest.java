@@ -2,14 +2,17 @@ package testCases;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pageObjects.AccountRegistration;
 import pageObjects.HomePage;
 import testBase.TestBase;
+import utilities.RetryAnalyzer;
 
 public class AccountRegistrationTest extends TestBase {
-	@Test
+	
+	@Test(groups= {"functional", "sanity", "regression"}, retryAnalyzer = RetryAnalyzer.class)
 	public void verifyAccountRegistration() {
 		try {
 			logger.info("Starting Account Registration Test");
@@ -25,10 +28,12 @@ public class AccountRegistrationTest extends TestBase {
 			
 			String password=randomString(5, "password");
 			actReg.sendPassword(password);
+			Assert.fail();
 			actReg.sendConfirmPassword(password);
 			actReg.clickPrivacyBtn();
 			actReg.clickContinue();
 			String confirmation=actReg.getConfirmationMsg();
+			
 			Assert.assertEquals(confirmation, "Your Account Has Been Created!");
 			logger.info("Account has been created successfully!");
 		}

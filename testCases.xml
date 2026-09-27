@@ -7,10 +7,21 @@
 			<class name='testCases.AccountRegistrationTest'></class>
 		</classes>
 	</test> -->
+	<groups>
+		<run>
+			<include name="regression"/>
+		</run>
+	</groups>
+	
+	<listeners>
+		<listener class-name="utilities.ExtentReportUtility"></listener>
+	</listeners>
+	
 	<test name="Test2">
-	<parameter name="browser" value="chrome"></parameter>
+		<parameter name="browser" value="chrome"/>
 		<classes>
-			<class name='testCases.LoginTest'></class>
+			<class name="testCases.AccountRegistrationTest"></class>
+			<!-- <class name='testCases.LoginTest'></class> -->
 		</classes>
 	</test>
 	<!-- <test name="Test2">

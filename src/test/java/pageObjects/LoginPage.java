@@ -20,7 +20,7 @@ public class LoginPage extends BasePage {
 	WebElement btnLogin;
 	
 	@FindBy(xpath="//div[contains(@class,'alert-dismissible')]")
-	WebElement errorMsg;
+	public WebElement errorMsg;
 	
 	public void sendEmail(String email) {
 		pathEmail.sendKeys(email);
